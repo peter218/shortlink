@@ -1,6 +1,7 @@
 package com.nageoffer.shortlink.admin.controller;
 
 import com.nageoffer.shortlink.admin.common.convention.result.Result;
+import com.nageoffer.shortlink.admin.common.convention.result.Results;
 import com.nageoffer.shortlink.admin.common.enums.UserErrorCodeEnum;
 import com.nageoffer.shortlink.admin.dto.resp.UserRespDTO;
 import com.nageoffer.shortlink.admin.service.UserService;
@@ -28,7 +29,7 @@ public class UserController {
         if (result==null){
             return new Result<UserRespDTO>().setCode(UserErrorCodeEnum.USER_NONE.code()).setMessage(UserErrorCodeEnum.USER_NONE.message());
         }else {
-            return new Result<UserRespDTO>().setCode("0").setData(result);
+            return Results.success(result);
         }
     }
 }
