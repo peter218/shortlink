@@ -36,4 +36,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
             return null;
         }
     }
+
+    @Override
+    public Boolean hasUserName(String username) {
+        LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class).eq(UserDO::getUsername, username);
+        UserDO userDO = baseMapper.selectOne(queryWrapper);
+        if (userDO==null){
+            return false;
+        }
+        return true;
+    }
 }
